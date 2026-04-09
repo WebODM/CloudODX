@@ -28,9 +28,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/OpenDroneMap/CloudODM/internal/fs"
+	"github.com/WebODM/CloudODM/internal/fs"
 
-	"github.com/OpenDroneMap/CloudODM/internal/logger"
+	"github.com/WebODM/CloudODM/internal/logger"
 
 	"github.com/cheggaaa/pb"
 )

@@ -16,8 +16,8 @@
 package config
 
 import (
-	"github.com/OpenDroneMap/CloudODM/internal/logger"
-	"github.com/OpenDroneMap/CloudODM/internal/odm"
+	"github.com/WebODM/CloudODM/internal/logger"
+	"github.com/WebODM/CloudODM/internal/odm"
 )
 
 // CheckLogin checks if the node needs login

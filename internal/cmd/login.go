@@ -16,8 +16,8 @@
 package cmd
 
 import (
-	"github.com/OpenDroneMap/CloudODM/internal/config"
-	"github.com/OpenDroneMap/CloudODM/internal/logger"
+	"github.com/WebODM/CloudODM/internal/config"
+	"github.com/WebODM/CloudODM/internal/logger"
 	"github.com/spf13/cobra"
 )
 

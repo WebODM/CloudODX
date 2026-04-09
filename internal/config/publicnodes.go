@@ -21,7 +21,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/OpenDroneMap/CloudODM/internal/logger"
+	"github.com/WebODM/CloudODM/internal/logger"
 )
 
 type PublicNode struct {

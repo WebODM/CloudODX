@@ -22,10 +22,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/OpenDroneMap/CloudODM/internal/config"
-	"github.com/OpenDroneMap/CloudODM/internal/fs"
-	"github.com/OpenDroneMap/CloudODM/internal/logger"
-	"github.com/OpenDroneMap/CloudODM/internal/odm"
+	"github.com/WebODM/CloudODM/internal/config"
+	"github.com/WebODM/CloudODM/internal/fs"
+	"github.com/WebODM/CloudODM/internal/logger"
+	"github.com/WebODM/CloudODM/internal/odm"
 
 	"github.com/spf13/cobra"
 )
@@ -39,7 +39,7 @@ var maxUploadRetries int
 var rootCmd = &cobra.Command{
 	Use:     "odm [flags] <images> [<gcp>] [args]",
 	Short:   "A command line tool to process aerial imagery in the cloud",
-	Version: "1.1.1",
+	Version: "1.2.0",
 	Run: func(cmd *cobra.Command, args []string) {
 		user := config.Initialize()
 		if len(args) == 0 {

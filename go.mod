@@ -1,4 +1,4 @@
-module github.com/OpenDroneMap/CloudODM
+module github.com/WebODM/CloudODM
 
 go 1.16
 

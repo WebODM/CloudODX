@@ -31,8 +31,8 @@ import (
 	"strings"
 	"time"
 
-	odmio "github.com/OpenDroneMap/CloudODM/internal/io"
-	"github.com/OpenDroneMap/CloudODM/internal/logger"
+	odmio "github.com/WebODM/CloudODM/internal/io"
+	"github.com/WebODM/CloudODM/internal/logger"
 	"github.com/cheggaaa/pb"
 )
 

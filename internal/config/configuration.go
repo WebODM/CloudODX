@@ -26,9 +26,9 @@ import (
 	"path/filepath"
 	"strconv"
 
-	"github.com/OpenDroneMap/CloudODM/internal/fs"
-	"github.com/OpenDroneMap/CloudODM/internal/logger"
-	"github.com/OpenDroneMap/CloudODM/internal/odm"
+	"github.com/WebODM/CloudODM/internal/fs"
+	"github.com/WebODM/CloudODM/internal/logger"
+	"github.com/WebODM/CloudODM/internal/odm"
 
 	homedir "github.com/mitchellh/go-homedir"
 )

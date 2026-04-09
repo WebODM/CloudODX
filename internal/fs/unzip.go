@@ -26,7 +26,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/OpenDroneMap/CloudODM/internal/logger"
+	"github.com/WebODM/CloudODM/internal/logger"
 	"github.com/cheggaaa/pb"
 )
 

@@ -16,7 +16,7 @@
 package main
 
 import (
-	"github.com/OpenDroneMap/CloudODM/internal/cmd"
+	"github.com/WebODM/CloudODM/internal/cmd"
 )
 
 func main() {
