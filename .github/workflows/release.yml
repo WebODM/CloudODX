@@ -18,22 +18,28 @@ jobs:
         include:
           - goos: linux
             goarch: amd64
-            asset_name: odm-linux-amd64
+            os_name: Linux
+            arch_name: x86_64
           - goos: linux
             goarch: 386
-            asset_name: odm-linux-386
+            os_name: Linux
+            arch_name: i386
           - goos: windows
             goarch: amd64
-            asset_name: odm-windows-amd64.exe
+            os_name: Windows
+            arch_name: x86_64
           - goos: windows
             goarch: 386
-            asset_name: odm-windows-386.exe
+            os_name: Windows
+            arch_name: i386
           - goos: darwin
             goarch: amd64
-            asset_name: odm-darwin-amd64
+            os_name: macOS
+            arch_name: x86_64
           - goos: darwin
             goarch: arm64
-            asset_name: odm-darwin-arm64
+            os_name: macOS
+            arch_name: arm64
 
     steps:
       - name: Checkout
@@ -44,18 +50,38 @@ jobs:
         with:
           go-version-file: go.mod
 
+      - name: Set build variables
+        id: vars
+        run: |
+          VERSION="${GITHUB_REF_NAME}"
+          if [ "${{ matrix.goos }}" = "windows" ]; then
+            echo "binary=odm.exe" >> $GITHUB_OUTPUT
+            echo "archive=CloudODM_${VERSION}_${{ matrix.os_name }}_${{ matrix.arch_name }}.zip" >> $GITHUB_OUTPUT
+          else
+            echo "binary=odm" >> $GITHUB_OUTPUT
+            echo "archive=CloudODM_${VERSION}_${{ matrix.os_name }}_${{ matrix.arch_name }}.tar.gz" >> $GITHUB_OUTPUT
+          fi
+
       - name: Build
         env:
           GOOS: ${{ matrix.goos }}
           GOARCH: ${{ matrix.goarch }}
           CGO_ENABLED: 0
-        run: go build -trimpath -ldflags="-s -w" -o ${{ matrix.asset_name }} ./cmd/odm
+        run: go build -trimpath -ldflags="-s -w" -o ${{ steps.vars.outputs.binary }} ./cmd/odm
+
+      - name: Package (tar.gz)
+        if: matrix.goos != 'windows'
+        run: tar -czf "${{ steps.vars.outputs.archive }}" "${{ steps.vars.outputs.binary }}" LICENSE
+
+      - name: Package (zip)
+        if: matrix.goos == 'windows'
+        run: zip "${{ steps.vars.outputs.archive }}" "${{ steps.vars.outputs.binary }}" LICENSE
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.asset_name }}
-          path: ${{ matrix.asset_name }}
+          name: ${{ steps.vars.outputs.archive }}
+          path: ${{ steps.vars.outputs.archive }}
           retention-days: 1
 
   release:
