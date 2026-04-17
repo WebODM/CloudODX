@@ -4,6 +4,8 @@
 
 A command line tool to process aerial imagery in the cloud via [NodeODX](https://github.com/WebODM/NodeODX)'s API.
 
+<img width="979" height="512" alt="image" src="https://github.com/user-attachments/assets/09bf830d-e22a-4379-bec8-f136c902b754" />
+
 ## Getting Started
 
 1. [Download the application](https://github.com/WebODM/CloudODX/releases) for Windows, Mac or Linux.
