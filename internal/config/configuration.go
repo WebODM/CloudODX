@@ -28,7 +28,7 @@ import (
 
 	"github.com/WebODM/CloudODX/internal/fs"
 	"github.com/WebODM/CloudODX/internal/logger"
-	odm "github.com/WebODM/CloudODX/internal/odx"
+	"github.com/WebODM/CloudODX/internal/odx"
 
 	homedir "github.com/mitchellh/go-homedir"
 )
@@ -160,7 +160,7 @@ func (c Configuration) RemoveNode(name string) bool {
 // GetNode gets a Node instance given its name
 func (c Configuration) GetNode(name string) (*odx.Node, error) {
 	if len(c.Nodes) == 0 {
-		return nil, errors.New("No nodes. Add one with ./odm node")
+		return nil, errors.New("No nodes. Add one with ./odx node")
 	}
 
 	node, ok := c.Nodes[name]
@@ -171,7 +171,7 @@ func (c Configuration) GetNode(name string) (*odx.Node, error) {
 	return &node, nil
 }
 
-func (c Configuration) UpdateNode(name string, node odm.Node) {
+func (c Configuration) UpdateNode(name string, node odx.Node) {
 	c.Nodes[name] = node
 	c.Save()
 }

@@ -25,7 +25,7 @@ import (
 	"github.com/WebODM/CloudODX/internal/config"
 	"github.com/WebODM/CloudODX/internal/fs"
 	"github.com/WebODM/CloudODX/internal/logger"
-	"github.com/WebODM/CloudODX/internal/odm"
+	"github.com/WebODM/CloudODX/internal/odx"
 
 	"github.com/spf13/cobra"
 )
@@ -167,7 +167,7 @@ func invalidArg(arg string) {
 	logger.Error("Invalid argument " + arg + ". See ./odx args for a list of valid arguments.")
 }
 
-func parseOptions(options []string, nodeOptions []odx.OptionResponse) []odm.Option {
+func parseOptions(options []string, nodeOptions []odx.OptionResponse) []odx.Option {
 	result := []odx.Option{}
 
 	for i := 0; i < len(options); i++ {
