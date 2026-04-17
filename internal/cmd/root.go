@@ -1,4 +1,4 @@
-// Copyright © 2018 CloudODM Contributors
+// Copyright © 2026 CloudODX Contributors
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,10 +22,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/WebODM/CloudODM/internal/config"
-	"github.com/WebODM/CloudODM/internal/fs"
-	"github.com/WebODM/CloudODM/internal/logger"
-	"github.com/WebODM/CloudODM/internal/odm"
+	"github.com/WebODM/CloudODX/internal/config"
+	"github.com/WebODM/CloudODX/internal/fs"
+	"github.com/WebODM/CloudODX/internal/logger"
+	"github.com/WebODM/CloudODX/internal/odm"
 
 	"github.com/spf13/cobra"
 )
@@ -37,9 +37,9 @@ var parallelConnections int
 var maxUploadRetries int
 
 var rootCmd = &cobra.Command{
-	Use:     "odm [flags] <images> [<gcp>] [args]",
+	Use:     "odx [flags] <images> [<gcp>] [args]",
 	Short:   "A command line tool to process aerial imagery in the cloud",
-	Version: "1.2.0",
+	Version: "1.2.1",
 	Run: func(cmd *cobra.Command, args []string) {
 		user := config.Initialize()
 		if len(args) == 0 {
@@ -73,7 +73,7 @@ var rootCmd = &cobra.Command{
 			logger.Error("Cannot process", len(inputFiles), "files with this node, the node has a limit of", info.MaxImages)
 		}
 
-		logger.Debug("NodeODM version: " + info.Version)
+		logger.Debug("NodeODX version: " + info.Version)
 
 		node, err := user.GetNode(nodeName)
 		if err != nil {
@@ -93,7 +93,7 @@ var rootCmd = &cobra.Command{
 			}
 		}
 
-		odm.Run(inputFiles, parseOptions(options, nodeOptions), *node, outputPath, parallelConnections, maxUploadRetries)
+		odx.Run(inputFiles, parseOptions(options, nodeOptions), *node, outputPath, parallelConnections, maxUploadRetries)
 	},
 
 	TraverseChildren: true,
@@ -164,17 +164,17 @@ func filterImagesAndText(files []string) []string {
 }
 
 func invalidArg(arg string) {
-	logger.Error("Invalid argument " + arg + ". See ./odm args for a list of valid arguments.")
+	logger.Error("Invalid argument " + arg + ". See ./odx args for a list of valid arguments.")
 }
 
-func parseOptions(options []string, nodeOptions []odm.OptionResponse) []odm.Option {
-	result := []odm.Option{}
+func parseOptions(options []string, nodeOptions []odx.OptionResponse) []odm.Option {
+	result := []odx.Option{}
 
 	for i := 0; i < len(options); i++ {
 		o := options[i]
 
 		if strings.HasPrefix(o, "--") || strings.HasPrefix(o, "-") {
-			currentOption := odm.Option{}
+			currentOption := odx.Option{}
 
 			// Key
 			o = strings.TrimPrefix(o, "--")

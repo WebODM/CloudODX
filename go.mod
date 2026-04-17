@@ -1,4 +1,4 @@
-module github.com/WebODM/CloudODM
+module github.com/WebODM/CloudODX
 
 go 1.16
 

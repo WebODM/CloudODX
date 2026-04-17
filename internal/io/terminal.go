@@ -1,4 +1,4 @@
-// Copyright © 2018 CloudODM Contributors
+// Copyright © 2026 CloudODX Contributors
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

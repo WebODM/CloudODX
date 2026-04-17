@@ -1,4 +1,4 @@
-// Copyright © 2018 CloudODM Contributors
+// Copyright © 2026 CloudODX Contributors
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -26,9 +26,9 @@ import (
 	"path/filepath"
 	"strconv"
 
-	"github.com/WebODM/CloudODM/internal/fs"
-	"github.com/WebODM/CloudODM/internal/logger"
-	"github.com/WebODM/CloudODM/internal/odm"
+	"github.com/WebODM/CloudODX/internal/fs"
+	"github.com/WebODM/CloudODX/internal/logger"
+	odm "github.com/WebODM/CloudODX/internal/odx"
 
 	homedir "github.com/mitchellh/go-homedir"
 )
@@ -36,7 +36,7 @@ import (
 // NewConfiguration creates a new configuration from a specified file path
 func NewConfiguration(filePath string) Configuration {
 	conf := Configuration{}
-	conf.Nodes = map[string]odm.Node{}
+	conf.Nodes = map[string]odx.Node{}
 	conf.filePath = filePath
 	return conf
 }
@@ -48,7 +48,7 @@ func (c Configuration) Save() {
 
 // Configuration is a collection of config values
 type Configuration struct {
-	Nodes map[string]odm.Node `json:"nodes"`
+	Nodes map[string]odx.Node `json:"nodes"`
 
 	filePath string
 }
@@ -141,7 +141,7 @@ func (c Configuration) AddNode(name string, nodeURL string) error {
 		return errors.New(nodeURL + " is not a valid URL. A valid URL looks like: http://hostname:port/?token=optional")
 	}
 
-	c.Nodes[name] = odm.Node{URL: u.Scheme + "://" + u.Host, Token: u.Query().Get("token")}
+	c.Nodes[name] = odx.Node{URL: u.Scheme + "://" + u.Host, Token: u.Query().Get("token")}
 	c.Save()
 
 	return nil
@@ -158,7 +158,7 @@ func (c Configuration) RemoveNode(name string) bool {
 }
 
 // GetNode gets a Node instance given its name
-func (c Configuration) GetNode(name string) (*odm.Node, error) {
+func (c Configuration) GetNode(name string) (*odx.Node, error) {
 	if len(c.Nodes) == 0 {
 		return nil, errors.New("No nodes. Add one with ./odm node")
 	}

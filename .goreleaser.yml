@@ -1,9 +1,9 @@
 # Check the documentation at http://goreleaser.com
-project_name: CloudODM
+project_name: CloudODX
 builds:
   -
-    main: ./cmd/odm/main.go
-    binary: odm
+    main: ./cmd/odx/main.go
+    binary: odx
     env:
       - CGO_ENABLED=0
     goos:

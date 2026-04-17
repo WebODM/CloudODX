@@ -1,4 +1,4 @@
-// Copyright © 2018 CloudODM Contributors
+// Copyright © 2026 CloudODX Contributors
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
 package cmd
 
 import (
-	"github.com/WebODM/CloudODM/internal/config"
-	"github.com/WebODM/CloudODM/internal/logger"
+	"github.com/WebODM/CloudODX/internal/config"
+	"github.com/WebODM/CloudODX/internal/logger"
 	"github.com/spf13/cobra"
 )
 

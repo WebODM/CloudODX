@@ -1,4 +1,4 @@
-// Copyright © 2018 CloudODM Contributors
+// Copyright © 2026 CloudODX Contributors
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/WebODM/CloudODM/internal/logger"
+	"github.com/WebODM/CloudODX/internal/logger"
 )
 
 type PublicNode struct {
@@ -39,7 +39,7 @@ func GetPublicNodes() []PublicNode {
 	logger.Debug("Retrieving public nodes...")
 	nodes := []PublicNode{}
 
-	resp, err := http.Get("https://raw.githubusercontent.com/OpenDroneMap/CloudODM/master/public_nodes.json")
+	resp, err := http.Get("https://raw.githubusercontent.com/OpenDroneMap/CloudODX/master/public_nodes.json")
 	if err != nil {
 		logger.Info(err)
 		return nodes

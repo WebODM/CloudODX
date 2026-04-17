@@ -1,4 +1,4 @@
-// Copyright © 2018 CloudODM Contributors
+// Copyright © 2026 CloudODX Contributors
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -16,15 +16,15 @@
 package config
 
 import (
-	"github.com/WebODM/CloudODM/internal/logger"
-	"github.com/WebODM/CloudODM/internal/odm"
+	"github.com/WebODM/CloudODX/internal/logger"
+	"github.com/WebODM/CloudODX/internal/odx"
 )
 
 // CheckLogin checks if the node needs login
 // if it does, it attempts to login
 // it it doesn't, returns node.Info()
 // on error, it prints a message and exits
-func (c Configuration) CheckLogin(nodeName string, username string, password string) *odm.InfoResponse {
+func (c Configuration) CheckLogin(nodeName string, username string, password string) *odx.InfoResponse {
 	node, err := c.GetNode(nodeName)
 	if err != nil {
 		logger.Error(err)
@@ -33,7 +33,7 @@ func (c Configuration) CheckLogin(nodeName string, username string, password str
 	info, err := node.Info()
 	err = node.CheckAuthentication(err)
 	if err != nil {
-		if err == odm.ErrAuthRequired {
+		if err == odx.ErrAuthRequired {
 			token, err := node.TryLogin(username, password)
 			if err != nil {
 				logger.Error(err)

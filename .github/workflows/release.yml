@@ -55,11 +55,11 @@ jobs:
         run: |
           VERSION="${GITHUB_REF_NAME}"
           if [ "${{ matrix.goos }}" = "windows" ]; then
-            echo "binary=odm.exe" >> $GITHUB_OUTPUT
-            echo "archive=CloudODM_${VERSION}_${{ matrix.os_name }}_${{ matrix.arch_name }}.zip" >> $GITHUB_OUTPUT
+            echo "binary=odx.exe" >> $GITHUB_OUTPUT
+            echo "archive=CloudODX_${VERSION}_${{ matrix.os_name }}_${{ matrix.arch_name }}.zip" >> $GITHUB_OUTPUT
           else
-            echo "binary=odm" >> $GITHUB_OUTPUT
-            echo "archive=CloudODM_${VERSION}_${{ matrix.os_name }}_${{ matrix.arch_name }}.tar.gz" >> $GITHUB_OUTPUT
+            echo "binary=odx" >> $GITHUB_OUTPUT
+            echo "archive=CloudODX_${VERSION}_${{ matrix.os_name }}_${{ matrix.arch_name }}.tar.gz" >> $GITHUB_OUTPUT
           fi
 
       - name: Build
@@ -67,7 +67,7 @@ jobs:
           GOOS: ${{ matrix.goos }}
           GOARCH: ${{ matrix.goarch }}
           CGO_ENABLED: 0
-        run: go build -trimpath -ldflags="-s -w" -o ${{ steps.vars.outputs.binary }} ./cmd/odm
+        run: go build -trimpath -ldflags="-s -w" -o ${{ steps.vars.outputs.binary }} ./cmd/odx
 
       - name: Package (tar.gz)
         if: matrix.goos != 'windows'
